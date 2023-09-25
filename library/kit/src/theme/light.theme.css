@@ -1,0 +1,87 @@
+
+html[data-theme='light'] {
+
+  --transition-duration: 250ms;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+
+  /*********************/
+  /*      PALETTE      */
+  /*********************/
+
+  --color-danger: #d00f0f;
+  --color-danger-dark: #930404;
+  --color-danger-light: #f64848;
+
+  --color-primary: #1313f1;
+  --color-primary-dark: #0d0dad;
+  --color-primary-light: #4444ea;
+
+  --color-success: #14c600;
+  --color-success-dark: #42ad0d;
+  --color-success-light: #5cd236;
+
+  --color-gray: #a9a9a9;
+  --color-gray-dark: #606060;
+  --color-gray-light: #d5d2d2;
+
+  --color-white: #ffffff;
+  --color-dark: #313030;
+  --color-black: #000000;
+
+
+  /*********************/
+  /*      BUTTONS      */
+  /*********************/
+
+  --button-primary-mode-color-default: var(--color-white);
+  --button-primary-mode-background-default: var(--color-primary);
+  --button-primary-mode-background-default-hover: var(--color-primary-light);
+  --button-primary-mode-background-default-active: var(--color-primary-dark);
+
+  --button-primary-mode-color-success: var(--color-white);
+  --button-primary-mode-background-success: var(--color-success);
+  --button-primary-mode-background-success-hover: var(--color-success-light);
+  --button-primary-mode-background-success-active: var(--color-success-dark);
+
+  --button-primary-mode-color-danger: var(--color-white);
+  --button-primary-mode-background-danger: var(--color-danger);
+  --button-primary-mode-background-danger-hover: var(--color-danger-light);
+  --button-primary-mode-background-danger-active: var(--color-danger-dark);
+
+  --button-primary-disabled-color: var(--color-gray);
+  --button-primary-disabled-background: var(--color-gray-light);
+
+
+  /********************/
+  /*      INPUTS      */
+  /********************/
+
+  --input-mode-color-default: var(--color-dark);
+  --input-mode-border-color-default: var(--color-gray-light);
+  --input-mode-border-color-default-hover: var(--color-gray);
+  --input-mode-border-color-default-focus: var(--color-gray-dark);
+
+  --input-mode-color-success: var(--color-dark);
+  --input-mode-border-color-success: var(--color-success-light);
+  --input-mode-border-color-success-hover: var(--color-success);
+  --input-mode-border-color-success-focus: var(--color-success-dark);
+
+  --input-mode-color-danger: var(--color-dark);
+  --input-mode-border-color-danger: var(--color-danger-light);
+  --input-mode-border-color-danger-hover: var(--color-danger);
+  --input-mode-border-color-danger-focus: var(--color-danger-dark);
+
+
+  /***********************/
+  /*      PARAGRAPH      */
+  /***********************/
+
+  --paragraph-color: var(--color-black);
+  --label-color: var(--color-gray);
+  --description-color: var(--color-gray-dark);
+  --error-color: var(--color-black);
+}

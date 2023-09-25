@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+generator prismaClassGenerator {
+  provider = "prisma-class-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uuid      String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  password  String
+  isBlocked Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  claims       Claim[]
+  roles        Role[]        @relation("role_on_user")
+  person       Person?
+  refreshToken RefreshToken?
+
+  @@index([uuid, email, isBlocked])
+  @@map("user")
+}
+
+model Claim {
+  uuid  String @id @default(uuid()) @db.Uuid
+  key   String
+  value String
+
+  users    User   @relation(fields: [userUuid], references: [uuid])
+  userUuid String @db.Uuid
+
+  @@map("claim")
+}
+
+model Role {
+  code        String @id @unique @db.VarChar(255)
+  displayName String @unique
+
+  permissions Permission[] @relation("permission_on_role")
+  users       User[]       @relation("role_on_user")
+
+  @@map("role")
+}
+
+model Permission {
+  code        String @id @unique
+  displayName String @unique
+
+  roles Role[] @relation("permission_on_role")
+
+  @@map("permission")
+}
+
+enum PersonSexEnum {
+  MALE
+  FEMALE
+}
+
+model Person {
+  uuid       String        @id @default(uuid()) @db.Uuid
+  firstName  String
+  middleName String?
+  lastName   String
+  birthday   DateTime
+  sex        PersonSexEnum
+
+  user     User   @relation(fields: [userUuid], references: [uuid], onDelete: Cascade, onUpdate: Cascade)
+  userUuid String @db.Uuid
+
+  @@unique([userUuid])
+  @@index([uuid, firstName, lastName, sex, birthday])
+  @@map("person")
+}
+
+model RefreshToken {
+  uuid   String   @id @default(uuid()) @db.Uuid
+  token  String
+  expire DateTime
+
+  user     User   @relation(fields: [userUuid], references: [uuid], onDelete: Cascade, onUpdate: Cascade)
+  userUuid String @db.Uuid
+
+  @@unique([userUuid])
+  @@map("refresh_token")
+}

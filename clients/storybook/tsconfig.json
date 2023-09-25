@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig-ui.json",
+  "compilerOptions": {},
+  "exclude": ["node_modules"],
+  "include": ["stories", "react-app-env.d.ts"]
+}

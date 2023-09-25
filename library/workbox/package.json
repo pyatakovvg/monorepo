@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "@library/workbox",
+  "version": "0.0.1",
+  "description": "users",
+  "author": "Viktor Pyatakov <pyatakov.viktor@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types",
+  "scripts": {
+    "clean": "rimraf lib types",
+    "build": "yarn run clean && yarn run build:compile && yarn run build:types",
+    "build:types": "cross-env NODE_ENV=production tsc --project tsconfig.json",
+    "build:compile": "cross-env NODE_ENV=production babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files",
+    "start": "npm-run-all --parallel clean start:watch start:types",
+    "start:types": "tsc-watch --noClear --noColors",
+    "start:watch": "cross-env NODE_ENV=development babel ./src --out-dir ./lib --extensions '.ts,.tsx' --copy-files --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.22.15",
+    "@babel/core": "7.22.20",
+    "@babel/preset-env": "7.22.20",
+    "@babel/preset-react": "7.22.15",
+    "@babel/preset-typescript": "7.22.15",
+    "babel-plugin-module-resolver": "5.0.0",
+    "cross-env": "7.0.3",
+    "npm-run-all": "4.1.5",
+    "rimraf": "5.0.1",
+    "tsc": "2.0.4",
+    "tsc-watch": "6.0.4",
+    "typescript": "5.2.2"
+  }
+}

@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator prismaClassGenerator {
+  provider = "prisma-class-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model File {
+  uuid  String @id @default(uuid()) @db.Uuid
+  title String @db.Text
+
+  mime String @db.Text
+  size Int    @db.Integer
+
+  blob Bytes
+
+  @@index([uuid, title])
+  @@map("user")
+}

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "@library/type",
+  "version": "0.0.1",
+  "description": "User service",
+  "author": "Viktor Pyatakov",
+  "license": "UNLICENSED",
+  "main": "src/index.ts"
+}

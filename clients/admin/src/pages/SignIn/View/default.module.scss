@@ -1,0 +1,32 @@
+
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-gray);
+}
+
+.content {
+
+  display: block;
+  background: var(--color-white);
+  padding: 32px 60px;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 2px 16px 0 var(--color-gray-dark);
+}
+
+.header {
+
+  display: block;
+  text-align: center;
+}
+
+.form {
+
+  display: block;
+  margin: 32px 0 0;
+}

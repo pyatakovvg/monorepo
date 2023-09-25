@@ -1,0 +1,28 @@
+
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  background: #ccc;
+}
+
+.container {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.aside {
+
+  display: block;
+  background: #fff;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}

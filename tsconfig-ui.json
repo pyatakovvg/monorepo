@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+
+    "lib": ["es6", "dom", "dom.iterable", "esnext", "webworker"],
+    "types": ["node", "react-scripts"],
+    "typeRoots": ["types", "node_modules/@types"],
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "inlineSources": false,
+    "downlevelIteration": false,
+    "noEmit": false,
+    "sourceMap": false,
+    "useDefineForClassFields": true,
+    "preserveConstEnums": true,
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules"],
+  "include": []
+}

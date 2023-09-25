@@ -1,0 +1,202 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator prismaClassGenerator {
+  provider = "prisma-class-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  shops Shop[]
+
+  @@index([uuid])
+  @@map("company")
+}
+
+model Shop {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @db.Text
+
+  isActive Boolean @default(true) @db.Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companyUuid String  @db.Uuid
+  company     Company @relation(fields: [companyUuid], references: [uuid])
+
+  products Product[]
+
+  @@index([uuid, companyUuid])
+  @@map("shop")
+}
+
+model Product {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  title       String @db.Text
+  description String @db.Text
+
+  shopUuid String @db.Uuid
+  shop     Shop   @relation(fields: [shopUuid], references: [uuid])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images     ImageOnProduct[]
+  categories CategoryOnProduct[]
+
+  // @@schema("product")
+  @@index([uuid, shopUuid])
+  @@map("product")
+}
+
+model Category {
+  uuid  String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title String @db.Text
+  code  String @db.Text
+
+  parentUuid String? @db.Uuid
+
+  children Category[] @relation("CategoryToCategory")
+  parent   Category?  @relation("CategoryToCategory", fields: [parentUuid], references: [uuid], onDelete: SetNull)
+
+  features FeatureOnCategory[]
+  products CategoryOnProduct[]
+
+  @@index([uuid, parentUuid, code])
+  @@map("category")
+}
+
+model CategoryOnProduct {
+  productUuid String  @db.Uuid
+  product     Product @relation(fields: [productUuid], references: [uuid])
+
+  categoryUuid String   @db.Uuid
+  category     Category @relation(fields: [categoryUuid], references: [uuid])
+
+  @@id([productUuid, categoryUuid])
+  @@map("category_on_product")
+}
+
+model Unit {
+  uuid  String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code  String @db.Text
+  value String @db.Text
+
+  features Feature[]
+
+  @@index([uuid, code])
+  @@map("unit")
+}
+
+model Image {
+  uuid  String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title String @db.Text
+
+  products ImageOnProduct[]
+
+  @@map("image")
+}
+
+model ImageOnProduct {
+  productUuid String  @db.Uuid
+  product     Product @relation(fields: [productUuid], references: [uuid], onDelete: Cascade, onUpdate: Cascade)
+
+  imageUuid String @db.Uuid
+  image     Image  @relation(fields: [imageUuid], references: [uuid], onDelete: Cascade, onUpdate: Cascade)
+
+  order Int @db.Integer
+
+  @@id([productUuid, imageUuid])
+  @@map("image_on_product")
+}
+
+enum FeatureTypeEnum {
+  DEFAULT
+  CHECKBOX
+  DATE
+  NUMBER
+  COLOR
+}
+
+enum FeatureStatusEnum {
+  SHOW
+  HIDE
+  OFF
+}
+
+model Feature {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  title String @db.Text
+
+  code String @db.Text
+
+  description String @db.Text
+
+  type FeatureTypeEnum @default(DEFAULT)
+
+  isShowInProductTab Boolean @default(true) @db.Boolean
+
+  isShowInProductList Boolean @default(false) @db.Boolean
+
+  isShowInProductHeader Boolean @default(false) @db.Boolean
+
+  status FeatureStatusEnum @default(SHOW)
+
+  groupUuid String?       @db.Uuid
+  group     FeatureGroup? @relation(fields: [groupUuid], references: [uuid])
+
+  unitUuid String? @db.Uuid
+  unit     Unit?   @relation(fields: [unitUuid], references: [uuid])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  categories FeatureOnCategory[]
+
+  @@map("feature")
+}
+
+model FeatureGroup {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  title String @db.Text
+
+  description String @db.Text
+
+  order Int @db.Integer
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  feature Feature[]
+
+  @@map("feature_group")
+}
+
+model FeatureOnCategory {
+  featureUuid String  @db.Uuid
+  feature     Feature @relation(fields: [featureUuid], references: [uuid], onDelete: Cascade)
+
+  categoryUuid String   @db.Uuid
+  category     Category @relation(fields: [categoryUuid], references: [uuid], onDelete: Cascade)
+
+  @@id([featureUuid, categoryUuid])
+  @@map("feature_on_category")
+}

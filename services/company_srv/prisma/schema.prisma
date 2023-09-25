@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator prismaClassGenerator {
+  provider = "prisma-class-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @db.Text
+
+  countryCode String   @db.Text
+  country     Country? @relation(fields: [countryCode], references: [code])
+
+  districtUuid String    @db.Uuid
+  district     District? @relation(fields: [districtUuid], references: [uuid])
+
+  regionUuid String  @db.Uuid
+  region     Region? @relation(fields: [regionUuid], references: [uuid])
+
+  cityUuid String @db.Uuid
+  city     City?  @relation(fields: [cityUuid], references: [uuid])
+
+  address    String @db.Text
+  postalCode Int    @db.Integer
+
+  supportPhone String @db.VarChar(12)
+  supportEmail String @db.Text
+
+  managerPhone String @db.VarChar(12)
+  managerEmail String @db.Text
+
+  orderPhone String @db.VarChar(12)
+  orderEmail String @db.Text
+
+  replayToEmail String @db.Text
+
+  startYear Int @db.Integer
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  shops Shop[]
+
+  @@index([uuid])
+  @@map("company")
+}
+
+model Shop {
+  uuid String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @db.Text
+
+  isActive Boolean @default(true) @db.Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companyUuid String  @db.Uuid
+  company     Company @relation(fields: [companyUuid], references: [uuid])
+
+  @@index([uuid, companyUuid])
+  @@map("shop")
+}
+
+model Country {
+  code  String @id @unique @db.Text
+  value String @db.Text
+
+  companies Company[]
+
+  @@index([code])
+  @@map("country")
+}
+
+model District {
+  uuid  String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  value String @db.Text
+
+  regions   Region[]
+  companies Company[]
+
+  @@index([uuid])
+  @@map("district")
+}
+
+model Region {
+  uuid         String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  value        String @db.Text
+  districtUuid String @db.Uuid
+
+  companies Company[]
+  cities    City[]
+  district  District  @relation(fields: [districtUuid], references: [uuid], onDelete: Cascade)
+
+  @@index([uuid, districtUuid])
+  @@map("region")
+}
+
+model City {
+  uuid       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  value      String @db.Text
+  regionUuid String @db.Uuid
+
+  companies Company[]
+  region    Region    @relation(fields: [regionUuid], references: [uuid])
+
+  @@index([uuid, regionUuid])
+  @@map("city")
+}

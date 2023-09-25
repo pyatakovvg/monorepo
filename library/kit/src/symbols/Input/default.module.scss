@@ -1,0 +1,64 @@
+
+.wrapper {
+
+  display: block;
+  border: 1px solid var(--input-mode-border-color-default);
+  color: var(--input-mode-color-default);
+  border-radius: 4px;
+  transition:
+          border var(--transition-duration),
+          color var(--transition-duration);
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--input-mode-border-color-default-hover);
+  }
+}
+
+.focused,
+.focused:hover {
+  border-color: var(--input-mode-border-color-default-focus);
+}
+
+.element {
+
+  display: block;
+  border: none;
+  padding: 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+  outline: none;
+}
+
+.mode {
+  &--success {
+
+    border-color: var(--input-mode-border-color-success);
+
+    &:hover {
+      border-color: var(--input-mode-border-color-success-hover);
+    }
+
+    &.focused,
+    &.focused:hover {
+      border-color: var(--input-mode-border-color-success-focus);
+    }
+  }
+
+  &--danger {
+
+    border-color: var(--input-mode-border-color-danger);
+
+    &:hover {
+      border-color: var(--input-mode-border-color-danger-hover);
+    }
+
+    &.focused,
+    &.focused:hover {
+      border-color: var(--input-mode-border-color-danger-focus);
+    }
+  }
+}

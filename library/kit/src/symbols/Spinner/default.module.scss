@@ -1,0 +1,16 @@
+
+.spinner {
+
+  display: inline-flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.point {
+
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: red;
+}

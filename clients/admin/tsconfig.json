@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig-ui.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@/components/*": ["./src/components/*"]
+    }
+  },
+  "include": ["./src", "./react-app-env.d.ts"]
+}

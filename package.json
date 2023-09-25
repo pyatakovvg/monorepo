@@ -1,0 +1,44 @@
+{
+  "name": "root",
+  "license": "UNLICENSED",
+  "scripts": {
+    "update": "yarn upgrade-interactive",
+    "format": "prettier --write \"**/src/**/*.ts\" \"**/test/**/*.ts\" \"**/prisma/**/*.ts\"",
+    "lint": "eslint \"**/{src,test}/**/*.ts\" --fix",
+    "dev:admin_gw": "yarn workspace @gateway/admin start:dev",
+    "dev:user_srv": "yarn workspace @service/user start:dev",
+    "dev:product_srv": "yarn workspace @service/product start:dev",
+    "start:storybook": "yarn workspace @client/storybook start",
+    "start:admin_gw": "yarn workspace @gateway/admin start",
+    "start:user_srv": "yarn workspace @service/user start",
+    "start:product_srv": "yarn workspace @service/product start",
+    "build:storybook": "yarn workspaces foreach -tR --from '@client/storybook' run build",
+    "build:admin_gw": "yarn workspaces foreach -tR --from '@gateway/admin' run build",
+    "build:user_srv": "yarn workspaces foreach -tR --from '@service/user' run build",
+    "build:product_srv": "yarn workspaces foreach -tR --from '@service/product' run build"
+  },
+  "devDependencies": {
+    "@types/node": "20.6.4",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "eslint": "8.50.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "prettier": "3.0.3"
+  },
+  "workspaces": [
+    "helpers/*",
+    "library/*",
+    "pages/*",
+    "clients/*",
+    "gateways/*",
+    "services/*"
+  ],
+  "packageManager": "yarn@3.6.1",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}

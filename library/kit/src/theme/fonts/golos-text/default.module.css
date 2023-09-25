@@ -1,0 +1,41 @@
+
+/* BOLD */
+
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('./bold/font.woff2') format('woff2'),
+    url('./bold/font.woff') format('woff'),
+    url('./bold/font.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* MEDIUM */
+
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('./medium/font.woff2') format('woff2'),
+    url('./medium/font.woff') format('woff'),
+    url('./medium/font.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* REGULAR */
+
+@font-face {
+  font-family: 'Golos Text';
+  src:
+    url('./regular/font.woff2') format('woff2'),
+    url('./regular/font.woff') format('woff'),
+    url('./regular/font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  font-family: 'Golos Text', sans-serif;
+}

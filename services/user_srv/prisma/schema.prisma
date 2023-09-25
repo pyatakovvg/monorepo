@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+generator prismaClassGenerator {
+  provider = "prisma-class-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Auth {
+  uuid      String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  password  String
+  isBlocked Boolean  @default(false)
+  user      User?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("auth")
+}
+
+model User {
+  uuid       String   @id @default(uuid()) @db.Uuid
+  firstName  String
+  lastName   String
+  middleName String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  roles      Role[]   @relation("UserRole")
+  authUuid   String   @unique @db.Uuid
+  auth       Auth?    @relation(fields: [authUuid], references: [uuid])
+
+  @@map("user")
+}
+
+model Role {
+  code        String @id @unique @db.VarChar(255)
+  displayName String @unique
+
+  users User[] @relation("UserRole")
+
+  @@map("role")
+}
+
+model Permission {
+  key         String @id @unique
+  displayName String @unique
+
+  @@map("permission")
+}
