@@ -26,14 +26,7 @@ import { RefreshStrategy } from './strategies/refrersh.strategy';
       }),
     }),
   ],
-  providers: [
-    AuthService,
-    ConfigService,
-    LocalStrategy,
-    JwtStrategy,
-    RefreshStrategy,
-    RefreshTokenRepository,
-  ],
+  providers: [AuthService, ConfigService, LocalStrategy, JwtStrategy, RefreshStrategy, RefreshTokenRepository],
   controllers: [AuthController],
 })
 export class AuthModule {}

@@ -18,7 +18,10 @@ export class Route {
     readonly options?: IRouteOptions,
   ) {}
 
-  static async loadModule(content: Promise<any>) {
+  static async loadModule(content: Promise<any> | Function) {
+    if (content instanceof Function) {
+      content = content();
+    }
     const Module = await content;
     const module = new Module.default();
     return module.createView();

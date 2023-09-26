@@ -32,9 +32,7 @@ export class RefreshTokenRepository {
     return userDataToUpdate.token;
   }
 
-  public async findRefreshToken(
-    userUuid: string,
-  ): Promise<RefreshToken | null> {
+  public async findRefreshToken(userUuid: string): Promise<RefreshToken | null> {
     const fetch = new Fetch({
       baseURL: this.config.get('API_IDENTITY_SRV'),
     });

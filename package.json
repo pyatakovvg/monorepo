@@ -32,7 +32,8 @@
     "pages/*",
     "clients/*",
     "gateways/*",
-    "services/*"
+    "services/*",
+    "modules/*"
   ],
   "packageManager": "yarn@3.6.1",
   "eslintConfig": {

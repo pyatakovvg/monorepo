@@ -8,8 +8,6 @@ export class RoleEntity {
   @Exclude()
   displayName: string;
 
-  @Transform(({ value }) =>
-    value.map((permission: PermissionEntity) => permission.code),
-  )
+  @Transform(({ value }) => value.map((permission: PermissionEntity) => permission.code))
   permissions: string[];
 }

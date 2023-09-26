@@ -25,9 +25,7 @@ export class AuthService {
   }
 
   async generateRefreshToken(user: any) {
-    const token = await this.refreshTokenRepository.createRefreshToken(
-      user.uuid,
-    );
+    const token = await this.refreshTokenRepository.createRefreshToken(user.uuid);
   }
 
   resolveRefreshToken() {}

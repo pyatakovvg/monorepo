@@ -1,4 +1,4 @@
-import { Type, Transform, Exclude } from 'class-transformer';
+import { Type, Exclude } from 'class-transformer';
 
 import { RoleEntity } from './role.entity';
 

@@ -48,7 +48,7 @@ const LoadView: React.FC<IRotesViewProps & IPropsWithAppRoute> = (props) => {
   if (!View) {
     return <props.Loader />;
   }
-
+  console.log(View);
   return <View />;
 };
 

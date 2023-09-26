@@ -1,9 +1,4 @@
-import {
-  Request,
-  BadRequestException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Request, BadRequestException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 
@@ -42,10 +37,7 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
     if (!data?.refreshToken) {
       throw new BadRequestException('invalid refresh token');
     }
-    const isRefreshTokenCheck = await this.authService.validateRefreshToken(
-      payload.email,
-      data.refreshToken,
-    );
+    const isRefreshTokenCheck = await this.authService.validateRefreshToken(payload.email, data.refreshToken);
 
     if (!isRefreshTokenCheck) {
       throw new BadRequestException('token expired');

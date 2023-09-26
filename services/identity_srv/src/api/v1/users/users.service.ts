@@ -117,9 +117,7 @@ export class UsersService {
       data: {
         email: data.email,
         roles: {
-          connect: data.roles
-            ? data.roles.map((role) => ({ code: role }))
-            : undefined,
+          connect: data.roles ? data.roles.map((role) => ({ code: role })) : undefined,
         },
         claims: {
           upsert: data?.claims,

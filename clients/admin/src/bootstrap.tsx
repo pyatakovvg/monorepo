@@ -13,19 +13,19 @@ import { SubWrapper } from './components/layouts/SubWrapper';
 
 const app = new Application({
   routes: [
-    new Route('/', import('./pages/Home')),
+    new Route('/', () => import('@module/home')),
 
     new Route(
       '/products/*',
       [
-        new Route('/', import('./pages/Home'), { layout: SubWrapper }),
+        new Route('/', () => import('@module/projects'), { layout: SubWrapper }),
         new Route('/new', import('./pages/Next')),
         new Route('/:id', import('./pages/Next')),
       ],
       { layout: NavWrapper },
     ),
 
-    new Route('/sign-in', import('./pages/SignIn'), { isPublic: true }),
+    new Route('/sign-in', () => import('@module/sign-in'), { isPublic: true }),
 
     new Route('/error', import('./pages/Error'), { isPublic: true }),
     new Route('*', import('./pages/NotPage'), { isPublic: true }),

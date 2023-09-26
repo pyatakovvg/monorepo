@@ -4,16 +4,11 @@ import { observer } from 'mobx-react';
 import { Event, TEventCallback, IEventData } from '@/common/Event';
 
 import { Provider } from './module.context';
-import { context as applicationContext, IApplication } from '../application/Application';
+import { IApplication } from '../application/Application';
 
 export interface IRouteParams {
-  view: React.LazyExoticComponent<any>;
+  view: any;
   controller: any;
-}
-
-export interface IModuleViewProps {
-  Splash: React.FC;
-  Loader: React.FC;
 }
 
 const createInstance = (Target: any) => {
@@ -75,7 +70,7 @@ export function Module(params: IRouteParams) {
                 controller: this.controller,
               }}
             >
-              <Suspense fallback={<p>kjhkj</p>}>
+              <Suspense fallback={null}>
                 <View />
               </Suspense>
             </Provider>

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig-ui.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./types",
+    "isolatedModules": false,
+
+    "paths": {},
+    "jsx": "react"
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src", "./react-app-env.d.ts"]
+}

@@ -1,11 +1,4 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsEmail,
-  Length,
-  IsArray,
-  IsOptional,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail, Length, IsArray, IsOptional } from 'class-validator';
 
 import { PersonCreateDto } from './person-create.dto';
 

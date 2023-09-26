@@ -1,11 +1,4 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsOptional,
-  IsNumber,
-  IsEmail,
-  IsInt,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsNumber, IsEmail, IsInt } from 'class-validator';
 
 export class QueryDto {
   @IsOptional()

@@ -1,28 +1,24 @@
-
 import { registerRoute } from 'workbox-routing';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
-
 
 const CACHE_FONTS_NAME = `qand-fonts-mobile`;
 const CACHE_IMAGES_NAME = `qand-images-mobile`;
 const CACHE_GOOGLE_FONTS_NAME = `qand-google-fonts-mobile`;
 
-
-export default function() {
-
+export default function () {
   registerRoute(
     ({ request }) => request.destination === 'font',
     new StaleWhileRevalidate({
       cacheName: CACHE_FONTS_NAME,
-    })
+    }),
   );
 
   registerRoute(
     /^https:\/\/fonts\.googleapis\.com/,
     new StaleWhileRevalidate({
-        cacheName: CACHE_GOOGLE_FONTS_NAME,
-    })
+      cacheName: CACHE_GOOGLE_FONTS_NAME,
+    }),
   );
 
   registerRoute(
@@ -30,11 +26,11 @@ export default function() {
     new NetworkFirst({
       cacheName: CACHE_IMAGES_NAME,
       plugins: [
-        new ExpirationPlugin ({
+        new ExpirationPlugin({
           maxEntries: 50,
           maxAgeSeconds: 7 * 24 * 60 * 60, // 7 дней
         }),
       ],
-    })
+    }),
   );
 }

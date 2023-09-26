@@ -19,11 +19,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
-  SwaggerModule.setup(
-    'api',
-    app,
-    SwaggerModule.createDocument(app, swaggerConfig),
-  );
+  SwaggerModule.setup('api', app, SwaggerModule.createDocument(app, swaggerConfig));
 
   await app.listen(port, () => {
     console.log('[WEB]', config.get<string>('BASE_URL'));
