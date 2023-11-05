@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Input, EMode, ESize } from '@library/kit';
+import { Input, EMode } from '@library/kit';
+
+import React from 'react';
 
 type Story = StoryObj<typeof Input>;
 
@@ -10,13 +12,13 @@ export default {
   argTypes: {
     mode: {
       description: 'Цвет',
-      defaultValue: EMode.PRIMARY,
+      defaultValue: EMode.DEFAULT,
       table: {
         type: {
-          defaultValue: EMode.PRIMARY,
+          defaultValue: EMode.DEFAULT,
         },
       },
-      options: [EMode.PRIMARY, EMode.SUCCESS, EMode.DANGER],
+      options: [EMode.DEFAULT, EMode.DANGER],
       control: { type: 'select' },
     },
     disabled: {
@@ -28,15 +30,28 @@ export default {
       },
       control: 'boolean',
     },
+    placeholder: {
+      description: 'Плейсхолдер',
+    },
   },
   decorators: [],
 } satisfies Meta<typeof Input>;
 
-export const Primary: Story = {
-  name: 'Input primary',
+export const Base: Story = {
+  name: 'Base Input',
   args: {
-    mode: EMode.PRIMARY,
+    mode: EMode.DEFAULT,
     disabled: false,
     value: 'Применить',
+    placeholder: 'Введите значение',
+    readOnly: false,
+  },
+  render: (props) => {
+    const [value, setValue] = React.useState('');
+
+    function handleValue(event: React.FormEvent<HTMLInputElement>) {
+      setValue(event.currentTarget.value);
+    }
+    return <Input {...props} value={value} onInput={handleValue} />;
   },
 };

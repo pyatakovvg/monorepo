@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, EMode, ESize } from '@library/kit';
+import { Button, EMode, ESize, EVariant } from '@library/kit';
 
 type Story = StoryObj<typeof Button>;
 
@@ -22,15 +22,26 @@ export default {
       options: [ESize.SMALL, ESize.MEDIUM, ESize.LARGE],
       control: { type: 'select' },
     },
-    mode: {
-      description: 'Цвет',
-      defaultValue: EMode.PRIMARY,
+    variant: {
+      description: 'Вариант',
+      defaultValue: EVariant.PRIMARY,
       table: {
         type: {
-          defaultValue: EMode.PRIMARY,
+          defaultValue: EVariant.PRIMARY,
         },
       },
-      options: [EMode.PRIMARY, EMode.SUCCESS, EMode.DANGER],
+      options: [EVariant.PRIMARY, EVariant.SECONDARY, EVariant.GHOST],
+      control: { type: 'select' },
+    },
+    mode: {
+      description: 'Цвет',
+      defaultValue: EMode.DEFAULT,
+      table: {
+        type: {
+          defaultValue: EMode.DEFAULT,
+        },
+      },
+      options: [EMode.DEFAULT, EMode.SUCCESS, EMode.DANGER],
       control: { type: 'select' },
     },
     disabled: {
@@ -42,26 +53,17 @@ export default {
       },
       control: 'boolean',
     },
-    secondary: {
-      description: 'Второстепенная',
-      table: {
-        type: {
-          defaultValue: false,
-        },
-      },
-      control: 'boolean',
-    },
   },
   decorators: [],
 } satisfies Meta<typeof Button>;
 
-export const Primary: Story = {
-  name: 'Button primary',
+export const BaseButton: Story = {
+  name: 'Base button',
   args: {
     size: ESize.MEDIUM,
-    mode: EMode.PRIMARY,
+    variant: EVariant.PRIMARY,
+    mode: EMode.DEFAULT,
     disabled: false,
-    secondary: false,
     children: 'Применить',
   },
 };

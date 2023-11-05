@@ -3,11 +3,9 @@
 import { useEffect, useGlobals } from '@storybook/addons';
 
 import '!!style-loader!css-loader!@library/kit/lib/theme/reset.css';
-import '!!style-loader!css-loader!@library/kit/lib/theme/light.theme.css';
-import '!!style-loader!css-loader!@library/kit/lib/theme/dark.theme.css';
 
 export const decorators = [
-  StoryFn => {
+  (StoryFn) => {
     const [{ theme }] = useGlobals();
 
     useEffect(() => {

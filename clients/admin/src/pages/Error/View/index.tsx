@@ -2,12 +2,10 @@ import React from 'react';
 
 import s from './default.module.scss';
 
-const View = () => {
+export const ErrorView = () => {
   return (
     <div className={s.wrapper}>
       <p>Произошла ошибка</p>
     </div>
   );
 };
-
-export default View;

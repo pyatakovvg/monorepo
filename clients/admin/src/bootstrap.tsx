@@ -8,22 +8,15 @@ import { Loader } from './components/Loader';
 import { Splash } from './components/Splash';
 import { Error } from './components/Error';
 
-import { NavWrapper } from './components/layouts/NavWrapper';
-import { SubWrapper } from './components/layouts/SubWrapper';
+import { BaseLayout } from './layouts/Base';
 
 const app = new Application({
   routes: [
     new Route('/', () => import('@module/home')),
 
-    new Route(
-      '/products/*',
-      [
-        new Route('/', () => import('@module/projects'), { layout: SubWrapper }),
-        new Route('/new', import('./pages/Next')),
-        new Route('/:id', import('./pages/Next')),
-      ],
-      { layout: NavWrapper },
-    ),
+    new Route('/products/*', [new Route('/', () => import('@module/projects'))], {
+      layout: BaseLayout,
+    }),
 
     new Route('/sign-in', () => import('@module/sign-in'), { isPublic: true }),
 

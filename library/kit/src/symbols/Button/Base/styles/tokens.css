@@ -1,0 +1,52 @@
+
+html[data-theme="light"],
+html[data-theme="dark"] {
+
+    /*** BUTTONS ***/
+
+    --font-family-button: var(--font-family-body);
+
+    --font-size-button-small: var(--font-size-sm);
+    --font-size-button-normal: var(--font-size-md);
+    --font-size-button-large: var(--font-size-lg);
+
+    /*--- primary ---*/
+
+    --color-text-button-primary: var(--color-white);
+    --color-text-button-primary-disabled: var(--color-dim-gray);
+
+    --color-background-button-primary-disabled: var(--color-gainsboro);
+
+    --color-background-button-primary-default: var(--color-medium-blue);
+    --color-background-button-primary-default-hover: var(--color-dark-blue);
+
+    --color-background-button-primary-success: var(--color-green);
+    --color-background-button-primary-success-hover: var(--color-dark-green);
+
+    --color-background-button-primary-danger: var(--color-brown);
+    --color-background-button-primary-danger-hover: var(--color-maroon);
+
+    /*--- secondary ---*/
+
+    --color-text-button-secondary-disabled: var(--color-dim-gray);
+
+    --color-background-button-secondary: var(--color-white);
+
+    --color-text-button-secondary-default: var(--color-black);
+    --color-text-button-secondary-default-hover: var(--color-dark-slate-gray);
+
+    --color-text-button-secondary-success: var(--color-green);
+    --color-text-button-secondary-success-hover: var(--color-dark-green);
+
+    --color-text-button-secondary-danger: var(--color-brown);
+    --color-text-button-secondary-danger-hover: var(--color-maroon);
+
+    /*--- ghost ---*/
+
+    --color-text-button-ghost-default: var(--color-black);
+    --color-text-button-ghost-default-disabled: var(--color-dim-gray);
+
+    --color-background-button-ghost-default: var(--color-white);
+    --color-background-button-ghost-default-hover: var(--color-white-smoke);
+    --color-background-button-ghost-default-disabled: var(--color-white-smoke);
+}

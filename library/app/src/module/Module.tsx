@@ -48,8 +48,7 @@ export function Module(params: IRouteParams) {
       }
 
       createView(): React.FC<any> {
-        const View = params.view;
-
+        console.log(1, params.view);
         return observer(() => {
           React.useEffect(() => {
             this._events.emit('module:mount', {
@@ -70,9 +69,7 @@ export function Module(params: IRouteParams) {
                 controller: this.controller,
               }}
             >
-              <Suspense fallback={null}>
-                <View />
-              </Suspense>
+              {params.view}
             </Provider>
           );
         });

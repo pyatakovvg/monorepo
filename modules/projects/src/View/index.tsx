@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styles from './default.module.scss';
 import { ErrorBoundary } from 'react-error-boundary';
 
-const ProjectsView = observer(() => {
+export const ProjectsView = observer(() => {
   const { controller } = useModule();
 
   React.useEffect(() => {
@@ -32,5 +32,3 @@ const ProjectsView = observer(() => {
     </ErrorBoundary>
   );
 });
-
-export default ProjectsView;

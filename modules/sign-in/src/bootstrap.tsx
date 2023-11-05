@@ -1,7 +1,11 @@
 import { Module } from '@library/app';
 
+import React from 'react';
+
+import { SignInView } from './View';
+
 @Module({
-  view: import('./View'),
+  view: <SignInView />,
   controller: null,
 })
 export default class SignInPage {}

@@ -2,12 +2,11 @@
 
 import React from 'react';
 
+import './palette.css';
+import './variables.css';
 import './reset.css';
 import './animation.css';
 import './fonts/golos-text/default.module.css';
-
-import './light.theme.css';
-import './dark.theme.css';
 
 export enum ETheme {
   DARK = 'dark',

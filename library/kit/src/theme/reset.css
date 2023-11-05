@@ -43,10 +43,7 @@ table {
     border-spacing: 0;
 }
 
-b {
-    font-weight: bold;
-}
-
+b,
 strong {
-    font-weight: 700;
+    font-weight: var(--font-weight-body);
 }

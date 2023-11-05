@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styles from './default.module.scss';
 import { ErrorBoundary } from 'react-error-boundary';
 
-const HomeView = observer(() => {
+export const HomeView = observer(() => {
   const { controller } = useModule();
 
   React.useEffect(() => {
@@ -31,5 +31,3 @@ const HomeView = observer(() => {
     </ErrorBoundary>
   );
 });
-
-export default HomeView;

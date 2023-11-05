@@ -2,8 +2,10 @@ import { Module } from '@library/app';
 
 import React from 'react';
 
+import { ErrorView } from './View';
+
 @Module({
-  view: React.lazy(() => import('./View')),
+  view: <ErrorView />,
   controller: null,
 })
 export default class HomePage {}

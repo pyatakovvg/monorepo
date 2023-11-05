@@ -1,0 +1,30 @@
+
+html[data-theme="light"],
+html[data-theme="dark"] {
+
+    /*** INPUTS ***/
+
+    --font-family-input: var(--font-family-body);
+
+    --font-size-input-small: var(--font-size-sm);
+    --font-size-input-normal: var(--font-size-md);
+    --font-size-input-large: var(--font-size-lg);
+
+    /*--- primary ---*/
+
+    --color-text-input: var(--color-black);
+    --color-text-input-danger: var(--color-maroon);
+    --color-text-input-disabled: var(--color-dim-gray);
+    --color-text-input-placeholder: var(--color-dim-gray);
+
+    --color-background-input: var(--color-white);
+    --color-background-input-disabled: var(--color-gainsboro);
+    --color-background-input-readonly: var(--color-ghost-white);
+
+    --color-border-input: var(--color-silver);
+    --color-border-input-hover: var(--color-gray);
+    --color-border-input-focus: var(--color-black);
+    --color-border-input-danger: var(--color-fire-brick);
+    --color-border-input-disabled: var(--color-gainsboro);
+    --color-border-input-readonly: var(--color-ghost-white);
+}

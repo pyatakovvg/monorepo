@@ -1,11 +1,9 @@
 import React from 'react';
 
-const View = () => {
+export const NotPageView = () => {
   return (
     <div>
       <p>Страница не найдена</p>
     </div>
   );
 };
-
-export default View;

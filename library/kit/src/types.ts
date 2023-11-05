@@ -4,8 +4,14 @@ export enum ESize {
   LARGE = 'large',
 }
 
-export enum EMode {
+export enum EVariant {
   PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  GHOST = 'ghost',
+}
+
+export enum EMode {
+  DEFAULT = 'default',
   SUCCESS = 'success',
   DANGER = 'danger',
 }

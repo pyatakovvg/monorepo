@@ -8,7 +8,7 @@ import { Form } from './Form';
 
 import s from './default.module.scss';
 
-const View = () => {
+export const SignInView = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -51,5 +51,3 @@ const View = () => {
     </div>
   );
 };
-
-export default View;
