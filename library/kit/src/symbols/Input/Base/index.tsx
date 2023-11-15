@@ -5,7 +5,7 @@ import { EMode } from '@/types';
 import { IInput } from './types';
 
 import cn from 'classnames';
-import styles from './styles/default.module.scss';
+import styles from './default.module.scss';
 
 export const Input = ({ className, mode, placeholder, ...props }: IInput) => {
   const [isFocus, setFocus] = React.useState(false);
@@ -51,6 +51,9 @@ export const Input = ({ className, mode, placeholder, ...props }: IInput) => {
   }
 
   function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
+    if (props.readOnly) {
+      return void 0;
+    }
     setFocus(true);
     props.onFocus && props.onFocus(event);
   }

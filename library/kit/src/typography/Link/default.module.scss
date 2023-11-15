@@ -2,15 +2,15 @@
 .link {
 
   display: inline-block;
-  color: var(--color-primary);
+  color: var(--color-blue);
   text-decoration: underline;
   line-height: 1.6;
-  font-size: 14px;
-  font-family: inherit;
-  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-md);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-body);
   transition: color var(--transition-duration);
 
   &:hover {
-    color: var(--color-primary-light);
+    color: var(--color-dark-blue);
   }
 }

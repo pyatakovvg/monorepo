@@ -12,19 +12,20 @@
     "start:admin_gw": "yarn workspace @gateway/admin start",
     "start:user_srv": "yarn workspace @service/user start",
     "start:product_srv": "yarn workspace @service/product start",
+    "build:admin_ui": "yarn workspaces foreach -tR --from '@client/admin' run build",
     "build:storybook": "yarn workspaces foreach -tR --from '@client/storybook' run build",
     "build:admin_gw": "yarn workspaces foreach -tR --from '@gateway/admin' run build",
     "build:user_srv": "yarn workspaces foreach -tR --from '@service/user' run build",
     "build:product_srv": "yarn workspaces foreach -tR --from '@service/product' run build"
   },
   "devDependencies": {
-    "@types/node": "20.8.2",
-    "@typescript-eslint/eslint-plugin": "6.7.4",
-    "@typescript-eslint/parser": "6.7.4",
-    "eslint": "8.50.0",
+    "@types/node": "20.9.0",
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "8.53.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-prettier": "5.0.0",
-    "prettier": "3.0.3"
+    "eslint-plugin-prettier": "5.0.1",
+    "prettier": "3.1.0"
   },
   "workspaces": [
     "helpers/*",

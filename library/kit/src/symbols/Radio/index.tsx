@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Icon } from '../Icon';
-
 import { IRadio } from './types';
 
 import cn from 'classnames';

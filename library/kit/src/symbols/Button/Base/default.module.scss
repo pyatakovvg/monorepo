@@ -1,4 +1,3 @@
-@import "./tokens.css";
 
 .base-button {
 
@@ -6,6 +5,7 @@
   border-radius: var(--border-radius-md);
   box-sizing: border-box;
   outline: none;
+  min-height: 37px;
   padding: 10px 16px;
   min-width: 120px;
   font-family: var(--font-family-body);

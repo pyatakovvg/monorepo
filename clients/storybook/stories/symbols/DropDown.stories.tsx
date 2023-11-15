@@ -9,19 +9,41 @@ export default {
   title: 'Kit/Symbols/DropDown',
   component: DropDown,
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    disabled: {
+      description: 'Заблокирован',
+      table: {
+        type: {
+          defaultValue: false,
+        },
+      },
+      control: 'boolean',
+    },
+  },
   decorators: [],
 } satisfies Meta<typeof DropDown>;
 
 export const Base: Story = {
   name: 'Base DropDown',
-  args: {},
+  args: {
+    disabled: false,
+  },
   render: () => {
     return (
-      <div style={{ height: 120, background: 'red' }}>
+      <div style={{ height: 120, background: 'red', overflow: 'hidden', padding: 30 }}>
         <DropDown>
-          <DropDown.Content></DropDown.Content>
-          <DropDown.List></DropDown.List>
+          <DropDown.Content>
+            <p>Hello world</p>
+          </DropDown.Content>
+          <DropDown.List>
+            <div>
+              <p>kkjgkjgjhg</p>
+              <p>kkjgkjgjhg</p>
+              <p>kkjgkjgjhg</p>
+              <p>kkjgkjgjhg</p>
+              <p>kkjgkjgjhg</p>
+            </div>
+          </DropDown.List>
         </DropDown>
       </div>
     );

@@ -3,31 +3,31 @@
 
   display: block;
   line-height: 1.6;
-  font-family: inherit;
-  font-weight: var(--font-weight-regular);
-  color: var(--paragraph-color);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-body);
+  color: var(--color-black);
 }
 
 h1.heading {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
 }
 
 h2.heading {
-  font-size: 24px;
+  font-size: var(--font-size-2xl);
 }
 
 h3.heading {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
 }
 
 h4.heading {
-  font-size: 16px;
+  font-size: var(--font-size-lg);
 }
 
 h5.heading {
-  font-size: 14px;
+  font-size: var(--font-size-md);
 }
 
 h6.heading {
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }

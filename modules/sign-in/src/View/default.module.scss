@@ -6,17 +6,17 @@
   flex: 1 0;
   justify-content: center;
   align-items: center;
-  background: var(--color-gray);
+  background: var(--color-background-home-primary);
 }
 
 .content {
 
   display: block;
   background: var(--color-white);
-  padding: 32px 60px;
-  border-radius: 12px;
-  width: 420px;
-  box-shadow: 0 2px 16px 0 var(--color-gray-dark);
+  padding: 42px 72px;
+  border-radius: var(--border-radius-xl);
+  width: 380px;
+  box-shadow: var(--shadow-2xl);
 }
 
 .header {
@@ -28,5 +28,5 @@
 .form {
 
   display: block;
-  margin: 32px 0 0;
+  margin: 16px 0 0;
 }

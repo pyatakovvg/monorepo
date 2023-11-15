@@ -1,9 +1,12 @@
 import React from 'react';
 
+import { Event } from '@/utils/Event';
+
 import { IDropDown } from './types';
 
-import cn from 'classnames';
-import st from './styles/default.module.scss';
+import st from './default.module.scss';
+
+export const events = new Event();
 
 interface IFindProps {
   type: React.FC;
@@ -26,26 +29,12 @@ function Find({ children, type }: IFind) {
   return result[0];
 }
 
-const Content = () => {
-  return <p>Hello Content</p>;
+const Content = (props: React.PropsWithChildren) => {
+  return props.children;
 };
 
-const List = () => {
-  return (
-    <div>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-      <p>Hello List</p>
-    </div>
-  );
+const List = (props: React.PropsWithChildren) => {
+  return props.children;
 };
 
 export const DropDown = (props: IDropDown) => {
@@ -54,31 +43,77 @@ export const DropDown = (props: IDropDown) => {
   const [isOpen, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (!wrapperRef.current || !controlRef.current) {
-      return void 0;
+    if (props.disabled) {
+      setOpen(false);
     }
-    const wrapperRect = wrapperRef.current.getBoundingClientRect();
-    console.log(wrapperRect, screen.availHeight);
-    controlRef.current.style.top = wrapperRect.bottom + 'px';
-    controlRef.current.style.left = wrapperRect.left + 'px';
-  }, [wrapperRef, controlRef, isOpen]);
+  }, [props.disabled]);
+
+  React.useEffect(() => {
+    const handleClose = () => {
+      setOpen(false);
+    };
+    events.on('close', handleClose);
+    return () => {
+      events.off('close', handleClose);
+    };
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    if (isOpen && props.onFocus) {
+      props.onFocus();
+    }
+    if (!isOpen && props.onBlur) {
+      props.onBlur();
+    }
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    const handleClose = (event: MouseEvent) => {
+      if (!wrapperRef.current || props.disabled) {
+        return void 0;
+      }
+      if (isOpen && !wrapperRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClose);
+    return () => {
+      document.removeEventListener('click', handleClose);
+    };
+  }, [isOpen, wrapperRef, props.disabled]);
+
+  // React.useEffect(() => {
+  //   if (!wrapperRef.current || !controlRef.current) {
+  //     return void 0;
+  //   }
+  //   const wrapperRect: DOMRect = wrapperRef.current.getBoundingClientRect();
+  //
+  //   controlRef.current.style.top = wrapperRect.height + 'px';
+  //   controlRef.current.style.left = '0px';
+  // }, [wrapperRef, controlRef, isOpen]);
 
   function handleOpen() {
+    if (props.disabled) {
+      return void 0;
+    }
     setOpen(!isOpen);
   }
 
   return (
-    <div ref={wrapperRef} className={st.wrapper}>
-      <div className={st.content} onClick={() => handleOpen()}>
-        <Find type={Content}>{props.children}</Find>
-      </div>
-      {isOpen && (
-        <div ref={controlRef} className={st.control}>
-          <div>
-            <Find type={List}>{props.children}</Find>
-          </div>
+    <div className={st.wrapper}>
+      <div ref={wrapperRef} className={st.container}>
+        <div className={st.content} onClick={() => handleOpen()}>
+          <Find type={Content}>{props.children}</Find>
         </div>
-      )}
+        {isOpen && (
+          <div ref={controlRef} className={st.control}>
+            <div className={st.list}>
+              <Find type={List}>{props.children}</Find>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,13 +1,8 @@
-@import "./tokens.css";
-
-
 .wrapper {
 
   position: relative;
   display: block;
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-body);
-  font-family: var(--font-family-body);
+  min-height: 37px;
   border: 1px solid var(--color-border-input);
   color: var(--color-text-input);
   border-radius: var(--border-radius-md);
@@ -38,9 +33,9 @@
   width: 100%;
   color: inherit;
   box-sizing: border-box;
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-body);
+  font-family: var(--font-family-body);
   background: transparent;
   outline: none;
   z-index: 20;
@@ -71,6 +66,10 @@
   .text {
 
     display: block;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-light);
+    font-family: var(--font-family-body);
+    font-style: italic;
     color: var(--color-text-input-placeholder);
   }
 }

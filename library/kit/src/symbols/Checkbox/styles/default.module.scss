@@ -4,7 +4,7 @@
 
   display: inline-flex;
   flex-direction: row;
-  flex: 0 0 auto;
+  flex: 1 0;
   align-items: center;
   cursor: pointer;
 }
@@ -12,7 +12,9 @@
 .container {
 
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
   width: 21px;
   height: 21px;
   border-radius: var(--border-radius-md);
@@ -42,6 +44,7 @@
 
   display: block;
   margin: 0 0 0 12px;
+  font-family: var(--font-family-body);
 }
 
 .checkbox {

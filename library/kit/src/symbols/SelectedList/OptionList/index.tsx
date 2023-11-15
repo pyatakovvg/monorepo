@@ -1,29 +1,21 @@
 import React from 'react';
 
-import { IOptionList, TOptionValue } from './types';
+import { Multi } from './Multi';
+import { Simple } from './Simple';
 
-import cn from 'classnames';
-import st from './styles/default.module.scss';
-
-function checkActive(value: TOptionValue | TOptionValue[] | null, currentValue: TOptionValue) {
-  if (value instanceof Array) {
-    return value.some((item) => item === currentValue);
-  }
-  return value === currentValue;
-}
+import { IOptionList } from './types';
 
 export const OptionList = (props: IOptionList) => {
-  const wrapperClassName = React.useMemo(
-    () =>
-      cn(st.wrapper, {
-        [st.active]: checkActive(props.value, props.currentValue),
-      }),
-    [props.value],
-  );
-
+  if (props.isMultiple) {
+    return (
+      <Multi value={props.value} currentValue={props.currentValue} onClick={props.onClick}>
+        {props.children}
+      </Multi>
+    );
+  }
   return (
-    <div className={wrapperClassName} onClick={() => props.onClick()}>
+    <Simple value={props.value} currentValue={props.currentValue} onClick={props.onClick}>
       {props.children}
-    </div>
+    </Simple>
   );
 };

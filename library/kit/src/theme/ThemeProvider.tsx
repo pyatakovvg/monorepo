@@ -4,6 +4,7 @@ import React from 'react';
 
 import './palette.css';
 import './variables.css';
+import './tokens.css';
 import './reset.css';
 import './animation.css';
 import './fonts/golos-text/default.module.css';

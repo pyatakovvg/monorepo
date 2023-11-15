@@ -33,7 +33,12 @@ export const SelectedList = <O extends Record<string, any> = {}>(props: ISelecte
             {props.children && React.isValidElement(props.children) ? (
               React.cloneElement(props.children, option)
             ) : (
-              <OptionList currentValue={valueByKey} value={props.value} onClick={() => handleChange(valueByKey)}>
+              <OptionList
+                isMultiple={props.isMultiselect}
+                currentValue={valueByKey}
+                value={props.value}
+                onClick={() => handleChange(valueByKey)}
+              >
                 {value}
               </OptionList>
             )}

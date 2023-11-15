@@ -4,9 +4,9 @@
   display: inline-block;
   line-height: 1;
   font-size: 11px;
-  font-family: inherit;
-  font-weight: var(--font-weight-medium);
-  color: var(--label-color);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-body);
+  color: var(--color-gray);
   vertical-align: center;
 
   &--required:after {

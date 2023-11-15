@@ -1,6 +1,6 @@
 import React from 'react';
 
-type TOptionValue = string | number;
+export type TOptionValue = string | number;
 
 interface ISelectedListProps<O extends Record<string, any>> {
   className?: string;

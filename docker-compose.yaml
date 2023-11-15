@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  rabbitmq:
+  monorepo_rabbitmq:
     image: rabbitmq:3.12-management
-    hostname: rabbitmq
-    container_name: rabbit-mq
+    hostname: monorepo-rabbitmq
+    container_name: monorepo-rabbit-mq
     restart: always
     environment:
       - RABBITMQ_DEFAULT_USER=admin
@@ -12,57 +12,23 @@ services:
     volumes:
       - rabbitmq:/var/lib/rabbitmq
     ports:
-      - '5672:5672'
-      - '15672:15672'
+      - '5673:5672'
+      - '15673:15672'
 
-  postgres:
+  monorepo_postgres:
     image: postgres:14.1-alpine
-    container_name: postgresql
+    container_name: monorepo-postgresql
     restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
       - postgres:/var/lib/postgresql/data
-
-  gitlab-web:
-    image: 'gitlab/gitlab-ce:latest'
-    restart: always
-    hostname: 'localhost'
-    container_name: gitlab-ce
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost:8080'
-    ports:
-      - '8080:80'
-      - '8443:443'
-    volumes:
-      - '~/gitlab/config:/etc/gitlab'
-      - '~/gitlab/logs:/var/log/gitlab'
-      - '~/gitlab/data:/var/opt/gitlab'
-    networks:
-      - gitlab
-
-  gitlab-runner:
-    image: gitlab/gitlab-runner:alpine
-    container_name: gitlab-runner
-    restart: always
-    depends_on:
-      - gitlab-web
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - '~/gitlab/gitlab-runner:/etc/gitlab-runner'
-    networks:
-      - gitlab
 
 volumes:
   rabbitmq:
     driver: local
   postgres:
     driver: local
-
-networks:
-  gitlab:
-    name: gitlab-network

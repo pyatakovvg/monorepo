@@ -1,6 +1,6 @@
 import { Fetch } from '@helper/fetch';
 import { Injectable } from '@nestjs/common';
-import { RefreshToken } from '@prisma/client';
+import { RefreshToken } from '@prisma/client/edge';
 import { ConfigService } from '@nestjs/config';
 
 import { generate } from 'rand-token';

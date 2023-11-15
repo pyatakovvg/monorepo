@@ -10,8 +10,8 @@ export interface IIconProps {
   icon: IIcon;
 }
 
-export const Icon: React.FC<IIconProps> = (props) => {
+export const Icon: React.FC<IIconProps> = React.memo((props) => {
   return <i className={cn(styles.icon, `fa-${props.weight ?? 'solid'} fa-${props.icon}`)} />;
-};
+});
 
 export { icons, IIcon, weights, IWeight } from './types';

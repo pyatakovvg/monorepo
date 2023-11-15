@@ -5,7 +5,7 @@ import { IButton } from './types';
 import { EMode, ESize, EVariant } from '@/types';
 
 import cn from 'classnames';
-import styles from './styles/default.module.scss';
+import styles from './default.module.scss';
 
 export const Button = ({
   className,

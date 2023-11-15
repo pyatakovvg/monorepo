@@ -21,8 +21,22 @@
 .row {
 
   display: block;
+  margin: 16px 0 0;
 
   & + & {
-    margin: 16px 0 0;
+    margin: 6px 0 0;
   }
+}
+
+.description {
+
+  display: block;
+  margin: 16px 0 0;
+}
+
+.registry {
+
+  display: block;
+  margin: 16px 0 0;
+  text-align: center;
 }

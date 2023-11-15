@@ -48,7 +48,6 @@ const LoadView: React.FC<IRotesViewProps & IPropsWithAppRoute> = (props) => {
   if (!View) {
     return <props.Loader />;
   }
-  console.log(View);
   return <View />;
 };
 
@@ -119,8 +118,10 @@ export class ApplicationRoutes extends WithEvents implements IRoutes {
             switch (result.type) {
               case APPLICATION_UNAUTHORIZED:
                 return navigate('/sign-in');
-              case APPLICATION_ERROR:
+              case APPLICATION_ERROR: {
+                console.log(465654);
                 return navigate('/error');
+              }
             }
           }
         });
